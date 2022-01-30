@@ -36,7 +36,7 @@ theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
   - jemoji
-  - jekyll-remote-theme
+  - jekyll-redirect-from
 
 # Exclude from processing.
 # The following items will not be processed, by default.

@@ -3,6 +3,7 @@ layout: post
 title:  "Rust Notes"
 date:   2022-01-10 23:11:21 +0800
 categories: jekyll update
+tags: rust programming-language
 ---
 Rust is a System programming language like C/C++. They are used to build software and software platforms. They can be used to build operating systems, game engines, compilers...
 
