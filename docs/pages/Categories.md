@@ -3,12 +3,11 @@ layout: page
 title: Categories
 permalink: /pages/categories/
 ---
-<h2>Programming Language</h2>
+[Programming Language]({% link tag/programming-language.md %})
 
-- [C++]({% link pages/subcategories/C++.md %})
-- [Rust]({% link pages/subcategories/Rust.md %})
+- [Rust]({% link tag/rust.md %})
 
 <h2>Others</h2>
 
-- [Asynchronous Programming]({% link pages/subcategories/AsynchronousProgramming.md %})
+- [Asynchronous Programming]({% link tag/async.md %})
 
