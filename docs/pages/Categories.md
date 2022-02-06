@@ -5,9 +5,10 @@ permalink: /pages/categories/
 ---
 [Programming Language]({% link tag/programming-language.md %})
 
-- [Rust]({% link tag/rust.md %})
+-   [Rust]({% link tag/rust.md %})
+-   [Java Script]({% link tag/javascript.md %})
 
-<h2>Others</h2>
+Others
 
-- [Asynchronous Programming]({% link tag/async.md %})
+-   [Asynchronous Programming]({% link tag/async.md %})
 
