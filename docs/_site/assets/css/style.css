@@ -254,7 +254,7 @@ td, th { padding: 0; }
 
 body { padding: 0; margin: 0; font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.5; color: #606c71; }
 
-a { color: #0085a1; text-decoration: none; }
+a { color: #ffffff; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 .btn { display: inline-block; margin-bottom: 1rem; color: rgba(255, 255, 255, 0.7); background-color: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.2); border-style: solid; border-width: 1px; border-radius: 0.3rem; transition: color 0.2s, background-color 0.2s, border-color 0.2s; }
@@ -265,12 +265,12 @@ a:hover { text-decoration: underline; }
 @media screen and (max-width: 42em) { .btn { display: block; width: 100%; padding: 0.75rem; font-size: 0.9rem; }
   .btn + .btn { margin-top: 1rem; margin-left: 0; } }
 
-.page-header { color: #ffffff; text-align: center; background-color: #cfcfcf; height: 300px; }
+.page-header { color: #3a668a; text-align: center; background-color: #cfcfcf; height: 300px; }
 @media screen and (min-width: 64em) { .page-header { padding: 5rem 6rem; } }
 @media screen and (min-width: 42em) and (max-width: 64em) { .page-header { padding: 4rem 4rem 3rem; } }
 @media screen and (max-width: 42em) { .page-header { padding: 4rem 1rem 2rem; } }
 
-.nav { color: #ffffff; text-align: center; background-color: #cfcfcf; background-image: linear-gradient(120deg, #155799, #cfcfcf); }
+.nav { color: #3a668a; text-align: center; background-color: #cfcfcf; background-image: linear-gradient(120deg, #155799, #cfcfcf); }
 @media screen and (min-width: 64em) { .nav { padding: 0rem 6rem; } }
 @media screen and (min-width: 42em) and (max-width: 64em) { .nav { padding: 0rem 4rem; } }
 @media screen and (max-width: 42em) { .nav { padding: 0rem 1rem; } }
@@ -279,7 +279,7 @@ a:hover { text-decoration: underline; }
 
 .navbar-nav { flex-direction: row; display: flex; list-style: none; float: right; }
 
-.navbar-nav li a { padding: 0 20px; color: #ffffff; font-size: 1.3rem; }
+.navbar-nav li a { padding: 0 20px; color: #3a668a; font-size: 1.3rem; }
 
 .post-list { list-style: none; padding: 0; }
 
