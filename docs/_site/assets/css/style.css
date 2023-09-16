@@ -265,12 +265,12 @@ a:hover { text-decoration: underline; }
 @media screen and (max-width: 42em) { .btn { display: block; width: 100%; padding: 0.75rem; font-size: 0.9rem; }
   .btn + .btn { margin-top: 1rem; margin-left: 0; } }
 
-.page-header { color: rgba(255, 255, 255, 0.8); text-align: center; background-color: #cfcfcf; height: 300px; }
+.page-header { color: #ffffff; text-align: center; background-color: #cfcfcf; height: 300px; }
 @media screen and (min-width: 64em) { .page-header { padding: 5rem 6rem; } }
 @media screen and (min-width: 42em) and (max-width: 64em) { .page-header { padding: 4rem 4rem 3rem; } }
 @media screen and (max-width: 42em) { .page-header { padding: 4rem 1rem 2rem; } }
 
-.nav { color: rgba(255, 255, 255, 0.8); text-align: center; background-color: #cfcfcf; background-image: linear-gradient(120deg, #155799, #cfcfcf); }
+.nav { color: #ffffff; text-align: center; background-color: #cfcfcf; background-image: linear-gradient(120deg, #155799, #cfcfcf); }
 @media screen and (min-width: 64em) { .nav { padding: 0rem 6rem; } }
 @media screen and (min-width: 42em) and (max-width: 64em) { .nav { padding: 0rem 4rem; } }
 @media screen and (max-width: 42em) { .nav { padding: 0rem 1rem; } }
@@ -279,7 +279,7 @@ a:hover { text-decoration: underline; }
 
 .navbar-nav { flex-direction: row; display: flex; list-style: none; float: right; }
 
-.navbar-nav li a { padding: 0 20px; color: #3a668a; font-size: 1.3rem; }
+.navbar-nav li a { padding: 0 20px; color: #ffffff; font-size: 1.3rem; }
 
 .post-list { list-style: none; padding: 0; }
 
