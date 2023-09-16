@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="UTF-8" />
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Rust Notes | Yinan’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Rust Notes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Rust is a System programming language like C/C++. They are used to build software and software platforms. They can be used to build operating systems, game engines, compilers…" />
+<meta property="og:description" content="Rust is a System programming language like C/C++. They are used to build software and software platforms. They can be used to build operating systems, game engines, compilers…" />
+<link rel="canonical" href="http://localhost:4000/jekyll/update/2022/01/10/rust-introduction.html" />
+<meta property="og:url" content="http://localhost:4000/jekyll/update/2022/01/10/rust-introduction.html" />
+<meta property="og:site_name" content="Yinan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-10T23:11:21+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Rust Notes" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2022/01/10/rust-introduction.html"},"@type":"BlogPosting","url":"http://localhost:4000/jekyll/update/2022/01/10/rust-introduction.html","description":"Rust is a System programming language like C/C++. They are used to build software and software platforms. They can be used to build operating systems, game engines, compilers…","headline":"Rust Notes","dateModified":"2022-01-10T23:11:21+08:00","datePublished":"2022-01-10T23:11:21+08:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#157878" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    rel="stylesheet"
+    href="/assets/css/style.css?v=087e04622489b254fdf9fdf081030ec671c4f6d8"
+  />
+  <link rel="shortcut icon" href="/assets/favicon.png" />
+  <script src="https://use.fontawesome.com/9f9cb26d6f.js"></script>
+
+  
+       
+ 
+</head>
+
+  <body>
+    <div class="nav">
+  <!--<a class="logo"></a>-->
+  </style>
+  <ul class="navbar-nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/pages/categories/">Categories</a></li>
+  </ul>
+</div>
+<section class="page-header">
+  <style>
+    .page-header {
+      background-image: url("https://github.com/He-Yinan/He-Yinan.github.io/blob/main/docs/image/ai_cropped_background.jpg?raw=true");
+      background-size: cover;
+      color: rgb(246, 246, 246);
+    }
+  </style>
+  
+  <h1 class="project-name">Rust Notes</h1>
+    
+</section>
+
+    <section class="main-content">
+      <article class="post">
+  <header class="post-header">
+    <p class="post-meta">
+      <time
+        datetime="2022-01-10T23:11:21+08:00"
+        itemprop="datePublished"
+      >
+         Jan 10, 2022
+      </time>
+      
+      <span>
+         
+        <a href="/tag/rust"
+          ><code class="highligher-rouge"><nobr>#rust</nobr></code></a
+        >
+         
+        <a href="/tag/programming-language"
+          ><code class="highligher-rouge"><nobr>#programming-language</nobr></code></a
+        >
+        
+      </span>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody"><p>Rust is a System programming language like C/C++. They are used to build software and software platforms. They can be used to build operating systems, game engines, compilers…</p>
+
+<p>These programming languages require a great degree of hardware interaction.</p>
+
+<p>Rust focuses on:</p>
+
+<ol>
+  <li>Safety</li>
+  <li>Speed</li>
+  <li>Concurrency</li>
+</ol>
+
+<p>The language was designed for developing highly reliable and fast software in a simple way. Rust can be used to write high level programs down to hardware-specific programs.</p>
+
+<h2 id="installation-on-mac">Installation on Mac</h2>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl https://sh.rustup.rs <span class="nt">-sSf</span> | sh
+<span class="nv">$ </span><span class="nb">source</span> <span class="nv">$HOME</span>/.cargo/env
+</code></pre></div></div>
+
+<h2 id="hello-world">Hello World</h2>
+
+<ol>
+  <li>
+    <p>Open a text editor and write the code</p>
+
+    <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"Hello World"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Compile the code</p>
+
+    <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rustc Hello.rs
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>Upon successful compilation of the program, an executable file is generated.</p>
+
+<h2 id="data-types">Data Types</h2>
+
+<p>Rust is a statically typed language. Every value in Rust is of a certain data type. The compiler can automatically infer data type of the variable based on the value assigned to it.</p>
+
+<h3 id="declare-variables">Declare Variables</h3>
+
+<p>Use the <code class="language-plaintext highlighter-rouge">let</code> keyword to declare a variable.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">let</span> <span class="n">company_string</span> <span class="o">=</span> <span class="s">"TutorialsPoint"</span><span class="p">;</span>  <span class="c">// string type</span>
+   <span class="k">let</span> <span class="n">rating_float</span> <span class="o">=</span> <span class="mf">4.5</span><span class="p">;</span>                 <span class="c">// float type</span>
+   <span class="k">let</span> <span class="n">is_growing_boolean</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>          <span class="c">// boolean type</span>
+   <span class="k">let</span> <span class="n">icon_char</span> <span class="o">=</span> <span class="sc">'♥'</span><span class="p">;</span>                    <span class="c">//unicode character type</span>
+
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"company name is:{}"</span><span class="p">,</span><span class="n">company_string</span><span class="p">);</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"company rating on 5 is:{}"</span><span class="p">,</span><span class="n">rating_float</span><span class="p">);</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"company is growing :{}"</span><span class="p">,</span><span class="n">is_growing_boolean</span><span class="p">);</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"company icon is:{}"</span><span class="p">,</span><span class="n">icon_char</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">{}</code> is a placeholder</li>
+</ul>
+
+<p>The placeholder will be replaced by the variable’s value.</p>
+
+<h3 id="scalar-types">Scalar Types</h3>
+
+<p>A scalar type represents a single value. Rust has 4 scalar types.</p>
+
+<ol>
+  <li>Integer</li>
+  <li>Floating-point</li>
+  <li>Booleans</li>
+  <li>Characters</li>
+</ol>
+
+<h3 id="automatic-type-casting">Automatic Type Casting</h3>
+
+<p>Automatic Type Casting is <strong>NOT</strong> allowed in Rust. The following code will cause the compiler to throw a mismatch types error.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">let</span> <span class="n">interest</span><span class="p">:</span><span class="nb">f32</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>   <span class="c">// integer assigned to float variable</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"interest is {}"</span><span class="p">,</span><span class="n">interest</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="variables">Variables</h2>
+
+<p>A variable is a named storage that programs can manipulate. Variables in Rust are associated with a specific data type. The data type determines the size and layout of the variable’s memory. The range of values that can be stored within that memory and the set of operations that can be performed on the variable.</p>
+
+<h3 id="variable-declaration">Variable Declaration</h3>
+
+<p>No type specified</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="n">variable_name</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Type specified</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="n">variable_name</span><span class="p">:</span><span class="n">dataType</span> <span class="o">=</span> <span class="n">value</span>
+</code></pre></div></div>
+
+<h3 id="immutable">Immutable</h3>
+
+<p>By default, variables are immutable in Rust. A variable’s value cannot be changed once a value is bound to a variable name.</p>
+
+<p>The following code will cause the compiler to throw an error.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">let</span> <span class="n">fees</span> <span class="o">=</span> <span class="mi">25_000</span><span class="p">;</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"fees is {} "</span><span class="p">,</span><span class="n">fees</span><span class="p">);</span>
+   <span class="n">fees</span> <span class="o">=</span> <span class="mi">35_000</span><span class="p">;</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"fees changed is {}"</span><span class="p">,</span><span class="n">fees</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Cannot assign values twice to immutable variable.</p>
+
+<h3 id="mutable">Mutable</h3>
+
+<p>To make a variable mutable, prefix the variable name with <code class="language-plaintext highlighter-rouge">mut</code> keyword.</p>
+
+<p>The following code can be compiled successfully.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">let</span> <span class="k">mut</span> <span class="n">fees</span><span class="p">:</span><span class="nb">i32</span> <span class="o">=</span> <span class="mi">25_000</span><span class="p">;</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"fees is {} "</span><span class="p">,</span><span class="n">fees</span><span class="p">);</span>
+   <span class="n">fees</span> <span class="o">=</span> <span class="mi">35_000</span><span class="p">;</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"fees changed is {}"</span><span class="p">,</span><span class="n">fees</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="shadowing">Shadowing</h3>
+
+<p>Rust allows programmers to declare variables with the same name. In such a case, the new variable overrides the previous variable.</p>
+
+<ul>
+  <li>Rust support variables with different data types while shadowing.</li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">let</span> <span class="n">salary</span> <span class="o">=</span> <span class="mf">100.00</span><span class="p">;</span>
+   <span class="k">let</span> <span class="n">salary</span> <span class="o">=</span> <span class="mf">1.50</span> <span class="p">;</span> 
+   <span class="c">// reads first salary</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"The value of salary is :{}"</span><span class="p">,</span><span class="n">salary</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="constants">Constants</h2>
+
+<p>Constants represent values that cannot be changed. If you declare a constant, then there is now way its value changes. The keyword for using constants is <code class="language-plaintext highlighter-rouge">const</code>.</p>
+
+<ul>
+  <li>Constants MUST be explicitly typed.</li>
+  <li>Declared using <code class="language-plaintext highlighter-rouge">const</code> and not <code class="language-plaintext highlighter-rouge">let</code>.</li>
+  <li>Can be set only to a constant expression and not to the result of a function call or any other value that will be computed at runtime.</li>
+  <li>Does not support shadowing.</li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="n">VARIABLE_NAME</span><span class="p">:</span><span class="n">dataType</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="string">String</h2>
+
+<p>The string data type in Rust can be classified into the following:</p>
+
+<ol>
+  <li>String Literal (&amp;str)</li>
+  <li>String Object (String)</li>
+</ol>
+
+<h3 id="string-literal">String Literal</h3>
+
+<p>String literal are used when the value of a string is known at compile time. String literals are a set of characters, which are hardcoded into a variable.</p>
+
+<ul>
+  <li>Also known as string sliced.</li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">let</span> <span class="n">company</span><span class="p">:</span><span class="o">&amp;</span><span class="nb">str</span><span class="o">=</span><span class="s">"TutorialsPoint"</span><span class="p">;</span>
+   <span class="k">let</span> <span class="n">location</span><span class="p">:</span><span class="o">&amp;</span><span class="nb">str</span> <span class="o">=</span> <span class="s">"Hyderabad"</span><span class="p">;</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"company is : {} location :{}"</span><span class="p">,</span><span class="n">company</span><span class="p">,</span><span class="n">location</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="string-object">String Object</h3>
+
+<p>The string object type is provided in Standard Library. Unlike string literal, the string object type is not a part of the core language. It is defined as a public structure in standard library <code class="language-plaintext highlighter-rouge">pub struct String</code>. String is a growable collection. It is mutable and UTF-8 encoded type. The string object type can be used to represent string values that are provided at runtime.</p>
+
+<ul>
+  <li>Allocated in the <strong>heap</strong>.</li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
+   <span class="k">let</span> <span class="n">empty_string</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span> <span class="c">// empty string object created</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"length is {}"</span><span class="p">,</span><span class="n">empty_string</span><span class="nf">.len</span><span class="p">());</span>
+
+   <span class="k">let</span> <span class="n">content_string</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from</span><span class="p">(</span><span class="s">"TutorialsPoint"</span><span class="p">);</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"length is {}"</span><span class="p">,</span><span class="n">content_string</span><span class="nf">.len</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Empty string can be initialized by appending the string with a value using the <code class="language-plaintext highlighter-rouge">push_str()</code> function.</p>
+
+<h2 id="control-flow">Control Flow</h2>
+
+<ul>
+  <li>If statement</li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"number is positive"</span><span class="p">)</span> <span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>If else statement</li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span><span class="o">==</span><span class="mi">0</span> <span class="p">{</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"Even"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"Odd"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Match statement</p>
+
+    <p>The default case is  <code class="language-plaintext highlighter-rouge">_</code></p>
+  </li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="n">state_code</span> <span class="o">=</span> <span class="s">"MH"</span><span class="p">;</span>
+<span class="k">let</span> <span class="n">state</span> <span class="o">=</span> <span class="k">match</span> <span class="n">state_code</span> <span class="p">{</span>
+   <span class="s">"MH"</span> <span class="k">=&gt;</span> <span class="p">{</span><span class="nd">println!</span><span class="p">(</span><span class="s">"Found match for MH"</span><span class="p">);</span> <span class="s">"Maharashtra"</span><span class="p">},</span>
+   <span class="s">"KL"</span> <span class="k">=&gt;</span> <span class="s">"Kerala"</span><span class="p">,</span>
+   <span class="s">"KA"</span> <span class="k">=&gt;</span> <span class="s">"Karnadaka"</span><span class="p">,</span>
+   <span class="s">"GA"</span> <span class="k">=&gt;</span> <span class="s">"Goa"</span><span class="p">,</span>
+   <span class="mi">_</span> <span class="k">=&gt;</span> <span class="s">"Unknown"</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
+  <li>For loop</li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
+   <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">11</span><span class="p">{</span> <span class="c">// 11 is not inclusive</span>
+      <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mi">5</span> <span class="p">{</span>
+         <span class="k">continue</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="nd">println!</span><span class="p">(</span><span class="s">"x is {}"</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>While loop</li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
+   <span class="k">let</span> <span class="k">mut</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">{</span>
+      <span class="n">x</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+      <span class="nd">println!</span><span class="p">(</span><span class="s">"inside loop x value is {}"</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+   <span class="p">}</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"outside loop x value is {}"</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>Loop</p>
+
+    <p>Same as <code class="language-plaintext highlighter-rouge">while(true)</code>.</p>
+  </li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
+   <span class="c">//while true</span>
+   <span class="k">let</span> <span class="k">mut</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+   <span class="k">loop</span> <span class="p">{</span>
+      <span class="n">x</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
+      <span class="nd">println!</span><span class="p">(</span><span class="s">"x={}"</span><span class="p">,</span><span class="n">x</span><span class="p">);</span>
+
+      <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mi">15</span> <span class="p">{</span>
+         <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="functions">Functions</h2>
+
+<p>A function is a set of statements to perform a specific task. Once defined, functions may be called to access code. A function declaration tells the compiler about a function’s name, return type, and parameters. A function definition provides the actual body of the function.</p>
+
+<h3 id="function-definition">Function Definition</h3>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">return_type</span> <span class="p">{</span>
+   <span class="c">//statements</span>
+   <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="pass-by-value">Pass by Value</h3>
+
+<p>When a method is invoked, a new storage location is created for each value parameter. The values of the actual parameters are copied into them.</p>
+
+<p>Changes made to the parameter inside the invoked method have no effect on the argument.</p>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
+   <span class="k">let</span> <span class="n">no</span><span class="p">:</span><span class="nb">i32</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+   <span class="nf">mutate_no_to_zero</span><span class="p">(</span><span class="n">no</span><span class="p">);</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"The value of no is:{}"</span><span class="p">,</span><span class="n">no</span><span class="p">);</span> <span class="c">// 5</span>
+<span class="p">}</span>
+
+<span class="k">fn</span> <span class="nf">mutate_no_to_zero</span><span class="p">(</span><span class="k">mut</span> <span class="n">param_no</span><span class="p">:</span> <span class="nb">i32</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">param_no</span> <span class="o">=</span> <span class="n">param_no</span><span class="o">*</span><span class="mi">0</span><span class="p">;</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"param_no value is :{}"</span><span class="p">,</span><span class="n">param_no</span><span class="p">);</span> <span class="c">// 0</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="pass-by-reference">Pass by Reference</h3>
+
+<p>When a parameter is passed by reference, <strong>NO</strong> new storage location is created for the parameter. The reference parameters represent the same memory location as the actual parameters that are supplied to the method.</p>
+
+<ul>
+  <li>Parameter values can be passed by reference by prefixing the variable name with an <code class="language-plaintext highlighter-rouge">&amp;</code>.</li>
+</ul>
+
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">let</span> <span class="k">mut</span> <span class="n">no</span><span class="p">:</span><span class="nb">i32</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+   <span class="nf">mutate_no_to_zero</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">no</span><span class="p">);</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"The value of no is:{}"</span><span class="p">,</span><span class="n">no</span><span class="p">);</span> <span class="c">// 0</span>
+<span class="p">}</span>
+<span class="k">fn</span> <span class="nf">mutate_no_to_zero</span><span class="p">(</span><span class="n">param_no</span><span class="p">:</span><span class="o">&amp;</span><span class="k">mut</span> <span class="nb">i32</span><span class="p">){</span>
+   <span class="o">*</span><span class="n">param_no</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c">//de reference</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">*</code> operator is used to access value stored in the memory location that the variable param_no points to.</li>
+</ul>
+
+</div>
+
+  <br />
+  <iframe
+    src="https://www.facebook.com/plugins/like.php?href=http://localhost:4000/jekyll/update/2022/01/10/rust-introduction.html&width=450&layout=standard&action=like&size=large&show_faces=true&share=true&height=80&appId=119179925551713"
+    width="450"
+    height="80"
+    style="border: none; overflow: hidden"
+    scrolling="no"
+    frameborder="0"
+    allowTransparency="true"
+  ></iframe>
+</article>
+
+<div class="relatedPosts">
+  <h2>Related Posts</h2>
+  
+
+  <ul>
+      
+          
+          
+                 
+    <li>
+      <h3>
+        <a href="http://localhost:4000/jekyll/update/2022/02/14/graph-introduction.html"> Graph Data Structure Introduction </a>
+      </h3>
+    </li>
+              
+    <li>
+      <h3>
+        <a href="http://localhost:4000/jekyll/update/2022/01/31/javascript-async.html"> Asynchronous JavaScript </a>
+      </h3>
+    </li>
+          
+    <li>
+      <h3>
+        <a href="http://localhost:4000/jekyll/update/2022/01/04/welcome-to-jekyll.html"> Initial Post </a>
+      </h3>
+    </li>
+      
+  </ul>
+</div>
+
+
+
+      <footer class="site-footer">
+  <ul class="fa-ul">
+    
+    <li>
+      <a href="https://github.com/jekyll" target="_blank">
+        <i class="fa fa-github-square" aria-hidden="true"></i>
+      </a>
+    </li>
+      
+    <li>
+      <a href="http://eepurl.com/dgBLKn" target="_blank">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a href="http://www.natalyakosenko.com/feed.xml" target="_blank">
+        <i class="fa fa-rss-square" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+  <span class="site-footer-credits"
+    >Copyright © 2023 </span
+  >
+</footer>
+
+    </section>
+  </body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="UTF-8" />
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Asynchronous JavaScript | Yinan’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Asynchronous JavaScript" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed." />
+<meta property="og:description" content="Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed." />
+<link rel="canonical" href="http://localhost:4000/jekyll/update/2022/01/31/javascript-async.html" />
+<meta property="og:url" content="http://localhost:4000/jekyll/update/2022/01/31/javascript-async.html" />
+<meta property="og:site_name" content="Yinan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-31T14:35:24+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Asynchronous JavaScript" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2022/01/31/javascript-async.html"},"@type":"BlogPosting","url":"http://localhost:4000/jekyll/update/2022/01/31/javascript-async.html","description":"Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed.","headline":"Asynchronous JavaScript","dateModified":"2022-01-31T14:35:24+08:00","datePublished":"2022-01-31T14:35:24+08:00","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#157878" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    rel="stylesheet"
+    href="/assets/css/style.css?v=087e04622489b254fdf9fdf081030ec671c4f6d8"
+  />
+  <link rel="shortcut icon" href="/assets/favicon.png" />
+  <script src="https://use.fontawesome.com/9f9cb26d6f.js"></script>
+
+  
+       
+ 
+</head>
+
+  <body>
+    <div class="nav">
+  <!--<a class="logo"></a>-->
+  </style>
+  <ul class="navbar-nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/pages/categories/">Categories</a></li>
+  </ul>
+</div>
+<section class="page-header">
+  <style>
+    .page-header {
+      background-image: url("https://github.com/He-Yinan/He-Yinan.github.io/blob/main/docs/image/ai_cropped_background.jpg?raw=true");
+      background-size: cover;
+      color: rgb(246, 246, 246);
+    }
+  </style>
+  
+  <h1 class="project-name">Asynchronous JavaScript</h1>
+    
+</section>
+
+    <section class="main-content">
+      <article class="post">
+  <header class="post-header">
+    <p class="post-meta">
+      <time
+        datetime="2022-01-31T14:35:24+08:00"
+        itemprop="datePublished"
+      >
+         Jan 31, 2022
+      </time>
+      
+      <span>
+         
+        <a href="/tag/javascript"
+          ><code class="highligher-rouge"><nobr>#javascript</nobr></code></a
+        >
+         
+        <a href="/tag/async"
+          ><code class="highligher-rouge"><nobr>#async</nobr></code></a
+        >
+        
+      </span>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody"><p>Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed.</p>
+
+<p>Considering the fact that JavaScript is a single-threaded language, asynchronous programming is very useful when there exist time-consuming functions. However, asynchronous functions may be a pain in the neck in many cases. For example, the program may become unstable and error prone when asynchronous functions are not handled properly and multiple functions must execute sequentially. To manage asynchronous functions, we need to understand quite a few concepts:</p>
+
+<ol>
+  <li>Callback</li>
+  <li>Promise</li>
+  <li>Async</li>
+  <li>Await</li>
+</ol>
+
+<h2 id="callback">Callback</h2>
+
+<p>A callback function is a function passed as an argument to another funtion.</p>
+
+<p>Example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sumLogger</span><span class="p">(</span><span class="nx">ans</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Sum: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">ans</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">adder</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">num1</span> <span class="o">+</span> <span class="nx">num2</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">calculator</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">operator</span><span class="p">,</span> <span class="nx">displayer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">ans</span> <span class="o">=</span> <span class="nx">operator</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">);</span>
+    <span class="nx">displayer</span><span class="p">(</span><span class="nx">ans</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">calculator</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">adder</span><span class="p">,</span> <span class="nx">sumLogger</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">adder</code> is first called to compute the sum, then <code class="language-plaintext highlighter-rouge">answerLogger</code> is called to display the sum.</p>
+
+<p>To calculate subtraction, we do not need to change the code inside <code class="language-plaintext highlighter-rouge">calculator</code>. All we need to do is to write other functions like <code class="language-plaintext highlighter-rouge">diffLogger</code> and <code class="language-plaintext highlighter-rouge">subtractor</code> and change the way we call <code class="language-plaintext highlighter-rouge">calculator</code> to <code class="language-plaintext highlighter-rouge">calculator(num1, num2, subtractor, diffLogger)</code>. We do not need to change any existing code when we add a new feature. This is crucial in writing flexible code.</p>
+
+<p>The above example is a synchronous callback as it is executed sequentially. Callbacks can also be used to continue code execution after an asynchronous operation has completed (asynchronous callbacks).</p>
+
+<h2 id="promise">Promise</h2>
+
+<p>A <code class="language-plaintext highlighter-rouge">promise</code> is an object that represents the eventual completion or failure of an asynchronous operation.</p>
+
+<p>A JavaScript Promise object can be in one of three states:</p>
+<ol>
+  <li>Pending: initial state. (result is undefined)</li>
+  <li>Fulfilled: operation was completed successfully. (result is a valid value)</li>
+  <li>Reject: operation failed. (result is an error object)</li>
+</ol>
+
+<h3 id="creation">Creation</h3>
+
+<p>Syntax to create a promise object:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">x</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">Done!</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">// when successful</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">reject</span><span class="p">(</span><span class="dl">"</span><span class="s2">Failed</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">// when error occur</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="mi">3000</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// fulfillment</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// rejection</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">resolve()</code> and <code class="language-plaintext highlighter-rouge">reject</code> are two predefined functions that we do not need to define. <code class="language-plaintext highlighter-rouge">resolve()</code> is called when <code class="language-plaintext highlighter-rouge">setTimeout()</code> is executed according to expectation. <code class="language-plaintext highlighter-rouge">reject()</code> is called when error occurs.</p>
+
+<p>The two parameters in <code class="language-plaintext highlighter-rouge">promise.then()</code> are two anonymous callback functions. The first callback function is executed when <code class="language-plaintext highlighter-rouge">resolve()</code> function is called (<code class="language-plaintext highlighter-rouge">onFulfilled</code>). The parameter passed into the <code class="language-plaintext highlighter-rouge">resolve()</code> function corresponds to the <code class="language-plaintext highlighter-rouge">result</code>. The second callback function is executed when <code class="language-plaintext highlighter-rouge">reject()</code> function is called (<code class="language-plaintext highlighter-rouge">onRejected</code>).</p>
+
+<h2 id="async">Async</h2>
+
+<p>The keyword <code class="language-plaintext highlighter-rouge">async</code> can be placed before a function like this:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="dl">"</span><span class="s2">Hello World</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Functions with <code class="language-plaintext highlighter-rouge">async</code> will always return a promise. For example, the <code class="language-plaintext highlighter-rouge">foo()</code> function is exactly the same as the function below:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello World</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">foo</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Note that the returned message can be accessed using the <code class="language-plaintext highlighter-rouge">then()</code> function.</p>
+
+<p>The combination of <code class="language-plaintext highlighter-rouge">async</code> keyword and <code class="language-plaintext highlighter-rouge">then()</code> function can already solve the problem asynchronous functions. Code that depends on asynchronous code can be put inside the <code class="language-plaintext highlighter-rouge">then()</code> function to ensure that the asynchronous code has already finished executing before the subsequent code are executed. However, it is quite troublesome to use the <code class="language-plaintext highlighter-rouge">then()</code> method. In many cases, the <code class="language-plaintext highlighter-rouge">await</code> keyword can help to make our code much more elegant.</p>
+
+<h2 id="await">Await</h2>
+
+<p>The keyword <code class="language-plaintext highlighter-rouge">await</code> can <strong>only be used in async functions</strong>. It forces the code to wait until the promise is in a fulfilled state. Let’s take a look at an example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">timeout</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">Done!</span><span class="dl">"</span><span class="p">),</span> <span class="mi">10000</span><span class="p">)</span>  <span class="c1">// timeout for 10 seconds</span>
+    <span class="p">});</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Starting to block</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">promise</span><span class="p">;</span>  <span class="c1">// !</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Result out</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">timeout</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>The result printed in the console is as shown below:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Starting to block
+Result out  <span class="c"># after 10 seconds</span>
+Done!  <span class="c"># after 10 seconds</span>
+</code></pre></div></div>
+
+<p>The function execution pauses at <code class="language-plaintext highlighter-rouge">!</code> line and resumes after 10 seconds timeout. The <code class="language-plaintext highlighter-rouge">await</code> keyword makes sure <code class="language-plaintext highlighter-rouge">promise</code> is fulfilled and <code class="language-plaintext highlighter-rouge">result</code> is assigned <code class="language-plaintext highlighter-rouge">"Done!"</code> value before the code continues to execute.</p>
+
+<p>What happens without the <code class="language-plaintext highlighter-rouge">await</code> keyword? The console will print the following instead:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Starting to block
+Result out  <span class="c"># printed immediately</span>
+Promise <span class="o">{</span> &lt;pending&gt; <span class="o">}</span>  <span class="c"># printed immediately</span>
+</code></pre></div></div>
+
+<p>Note that the code did not pause at <code class="language-plaintext highlighter-rouge">!</code> line. This cause <code class="language-plaintext highlighter-rouge">result</code> to be a pending promise when <code class="language-plaintext highlighter-rouge">console.log(result)</code> is called.</p>
+</div>
+
+  <br />
+  <iframe
+    src="https://www.facebook.com/plugins/like.php?href=http://localhost:4000/jekyll/update/2022/01/31/javascript-async.html&width=450&layout=standard&action=like&size=large&show_faces=true&share=true&height=80&appId=119179925551713"
+    width="450"
+    height="80"
+    style="border: none; overflow: hidden"
+    scrolling="no"
+    frameborder="0"
+    allowTransparency="true"
+  ></iframe>
+</article>
+
+<div class="relatedPosts">
+  <h2>Related Posts</h2>
+  
+
+  <ul>
+      
+          
+          
+                 
+    <li>
+      <h3>
+        <a href="http://localhost:4000/jekyll/update/2022/02/14/graph-introduction.html"> Graph Data Structure Introduction </a>
+      </h3>
+    </li>
+              
+    <li>
+      <h3>
+        <a href="http://localhost:4000/jekyll/update/2022/01/10/rust-introduction.html"> Rust Notes </a>
+      </h3>
+    </li>
+          
+    <li>
+      <h3>
+        <a href="http://localhost:4000/jekyll/update/2022/01/04/welcome-to-jekyll.html"> Initial Post </a>
+      </h3>
+    </li>
+      
+  </ul>
+</div>
+
+
+
+      <footer class="site-footer">
+  <ul class="fa-ul">
+    
+    <li>
+      <a href="https://github.com/jekyll" target="_blank">
+        <i class="fa fa-github-square" aria-hidden="true"></i>
+      </a>
+    </li>
+      
+    <li>
+      <a href="http://eepurl.com/dgBLKn" target="_blank">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li>
+      <a href="http://www.natalyakosenko.com/feed.xml" target="_blank">
+        <i class="fa fa-rss-square" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+  <span class="site-footer-credits"
+    >Copyright © 2023 </span
+  >
+</footer>
+
+    </section>
+  </body>
+</html>
