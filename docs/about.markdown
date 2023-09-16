@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-Hi, I am He Yinan, a computer science student at Nanyang Technological University. I think blogging is a great way to summarize and organize notes. I hope to share my notes and thoughts through this blog. :grinning:
+Hi, I am He Yinan, I recently graduated from Nanyang Technological University with Bachelor's degree in computer science. My interest is in deep learning, machine learning, and computer visino. Currently I am working as an AI scientist.
