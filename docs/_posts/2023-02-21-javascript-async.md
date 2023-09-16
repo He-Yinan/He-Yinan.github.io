@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Asynchronous JavaScript"
-date:   2022-01-31 14:35:24 +0800
+date:   2023-02-21 14:35:24 +0800
 categories: jekyll update
-tags: javascript async
+tags: javascript programming-language
 ---
 Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed. 
 

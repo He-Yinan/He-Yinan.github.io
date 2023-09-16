@@ -27,9 +27,10 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  // font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Calibri";
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.75;
   color: $body-text-color;
 }
 
@@ -147,7 +148,9 @@ a {
 .navbar-nav li a {
   padding: 0 20px;
   color: $header-heading-color;
-  font-size: 1.3rem;
+  // font-size: 1.3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .post-list {
@@ -166,8 +169,9 @@ a {
 
 a.post-link {
   color: $section-headings-color;
-  font-size: 2.25rem;
+  font-size: 1.2rem;
   text-decoration: none;
+  font-weight: bold;
 
   &:hover {
     color: $hover-title-color;

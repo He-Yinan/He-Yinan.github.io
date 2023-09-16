@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Rust Notes"
-date:   2022-01-10 23:11:21 +0800
+date:   2023-01-10 23:11:21 +0800
 categories: jekyll update
 tags: rust programming-language
 ---
@@ -335,12 +335,3 @@ fn mutate_no_to_zero(param_no:&mut i32){
 ```
 
 -   The `*` operator is used to access value stored in the memory location that the variable param_no points to.
-
-
-
-
-
-
-
-
-
