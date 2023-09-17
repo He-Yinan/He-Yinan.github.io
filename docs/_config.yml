@@ -30,6 +30,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username: he-yinan
 linkedin_username: yinan-he
+markdown: kramdown
 
 # Build settings
 # minima

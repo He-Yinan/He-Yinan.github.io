@@ -283,7 +283,7 @@ a:hover { text-decoration: underline; }
 
 .post-list { list-style: none; padding: 0; }
 
-.post-list li { padding: 30px 0; border-bottom: solid 1px #eff0f1; }
+.post-list li { padding: 10px 0; border-bottom: solid 2px #767676; }
 
 .post-meta { font-size: 1rem; }
 
@@ -296,7 +296,7 @@ ul.fa-ul li { list-style-type: none; float: left; }
 
 ul.fa-ul li a i { background: #000000; color: #fff; width: 40px; height: 40px; border-radius: 20px; font-size: 25px; text-align: center; margin-right: 10px; padding-top: 15%; }
 
-.project-name { margin-top: 0; margin-bottom: 0.1rem; }
+.project-name { margin-top: 0; margin-bottom: 1rem; }
 @media screen and (min-width: 64em) { .project-name { font-size: 3.25rem; } }
 @media screen and (min-width: 42em) and (max-width: 64em) { .project-name { font-size: 2.25rem; } }
 @media screen and (max-width: 42em) { .project-name { font-size: 1.75rem; } }
@@ -318,8 +318,8 @@ ul.fa-ul li a i { background: #000000; color: #fff; width: 40px; height: 40px; b
 .main-content img { max-width: 100%; }
 @media screen and (min-width: 64em) { .main-content img { margin-right: 3rem; } }
 @media screen and (min-width: 42em) and (max-width: 64em) { .main-content img { margin-right: 3rem; } }
-.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 { margin-top: 2rem; margin-bottom: 1rem; font-weight: normal; color: #000000; }
-.main-content h2.homepage { margin-bottom: 0rem; }
+.main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6 { margin-top: 2rem; margin-bottom: 1rem; font-weight: normal; color: #000000; font-size: 1.4rem; }
+.main-content h2.homepage { margin-bottom: 1rem; }
 .main-content p { margin-bottom: 1em; }
 .main-content code { padding: 2px 4px; font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; font-size: 0.9rem; color: #335b77; background-color: #f3f6fa; border-radius: 0.3rem; }
 .main-content pre { padding: 0.8rem; margin-top: 0; margin-bottom: 1rem; font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace; color: #335b77; word-wrap: normal; background-color: #f3f6fa; border: solid 1px #dce6f0; border-radius: 0.3rem; }
@@ -339,7 +339,7 @@ ul.fa-ul li a i { background: #000000; color: #fff; width: 40px; height: 40px; b
 .main-content dl { padding: 0; }
 .main-content dl dt { padding: 0; margin-top: 1rem; font-size: 1rem; font-weight: bold; }
 .main-content dl dd { padding: 0; margin-bottom: 1rem; }
-.main-content hr { height: 2px; padding: 0; margin: 1rem 0; background-color: #eff0f1; border: 0; }
+.main-content hr { height: 2px; padding: 0; margin: 1rem 0; background-color: #767676; border: 0; }
 
 .site-footer { padding-top: 2rem; margin-top: 6rem; text-align: center; }
 @media screen and (min-width: 64em) { .site-footer { font-size: 1rem; } }

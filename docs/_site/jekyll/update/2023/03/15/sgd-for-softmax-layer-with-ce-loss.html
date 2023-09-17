@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+  <meta charset="UTF-8" />
+
+  <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Stochastic Gradient Descent for Softmax activation and Cross Entropy Loss | Yinan’s Blog</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Stochastic Gradient Descent for Softmax activation and Cross Entropy Loss" />
+<meta name="author" content="Yinan He" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Derive the partial derivative of Cross Entropy loss to neural network last layer weights." />
+<meta property="og:description" content="Derive the partial derivative of Cross Entropy loss to neural network last layer weights." />
+<link rel="canonical" href="http://localhost:4000/jekyll/update/2023/03/15/sgd-for-softmax-layer-with-ce-loss.html" />
+<meta property="og:url" content="http://localhost:4000/jekyll/update/2023/03/15/sgd-for-softmax-layer-with-ce-loss.html" />
+<meta property="og:site_name" content="Yinan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-03-15T11:08:12+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Stochastic Gradient Descent for Softmax activation and Cross Entropy Loss" />
+<script type="application/ld+json">
+{"headline":"Stochastic Gradient Descent for Softmax activation and Cross Entropy Loss","dateModified":"2023-03-15T11:08:12+08:00","datePublished":"2023-03-15T11:08:12+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2023/03/15/sgd-for-softmax-layer-with-ce-loss.html"},"author":{"@type":"Person","name":"Yinan He"},"url":"http://localhost:4000/jekyll/update/2023/03/15/sgd-for-softmax-layer-with-ce-loss.html","description":"Derive the partial derivative of Cross Entropy loss to neural network last layer weights.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#157878" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+    rel="stylesheet"
+    type="text/css"
+  />
+  <link
+    rel="stylesheet"
+    href="/assets/css/style.css?v=e04f656bae9a13cb7b625d5127857f961d71fc9a"
+  />
+  <link rel="shortcut icon" href="/assets/favicon.png" />
+  <script src="https://use.fontawesome.com/9f9cb26d6f.js"></script>
+
+  
+       
+ 
+</head>
+
+  <body>
+    <div class="nav">
+  <!--<a class="logo"></a>-->
+  </style>
+  <ul class="navbar-nav">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/pages/categories/">Categories</a></li>
+  </ul>
+</div>
+<section class="page-header">
+  <style>
+    .page-header {
+      background-image: url("https://github.com/He-Yinan/He-Yinan.github.io/blob/main/docs/image/ai_cropped_background.jpg?raw=true");
+      background-size: cover;
+      color: rgb(246, 246, 246);
+    }
+  </style>
+  
+  <h1 class="project-name">Stochastic Gradient Descent for Softmax activation and Cross Entropy Loss</h1>
+  <!--  -->
+  <!-- <h2 class="project-tagline">Derive the partial derivative of Cross Entropy loss to neural network last layer weights.</h2> -->
+  <!--   -->
+   
+</section>
+
+    <section class="main-content">
+      <article class="post">
+  <header class="post-header">
+    <p class="post-meta">
+      <time
+        datetime="2023-03-15T11:08:12+08:00"
+        itemprop="datePublished"
+      >
+         Mar 15, 2023
+      </time>
+      
+      <span>
+         
+        <a href="/tag/gradient-descent"
+          ><code class="highligher-rouge"><nobr>#gradient-descent</nobr></code></a
+        >
+         
+        <a href="/tag/deep-learning"
+          ><code class="highligher-rouge"><nobr>#deep-learning</nobr></code></a
+        >
+        
+      </span>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody"><p>Classification is used to predict discrete class labels. In deep learning, we often use the Softmax activation function in the final layer to convert logits to probabilities of the input belonging to the classes. The most common method to compute loss for classification task is Cross Entropy (CE) loss. This post explains how loss is back propagated to the <strong>last layer’s weight</strong> using Stochastic Gradient Descent (SGD).</p>
+
+<p>Consider neural network $f$ that has $K$ outputs and uses Softmax function $\sigma$ for the last layer activation. $f$ is parameterized by $\theta = (W, V)$, where $W$ are the weights of the last layer, and $V$ consists of weights of all previous layers. $f(x; \theta) = \sigma(W \cdot z(x;V))$, where $z$ is the nonlinear function that maps an input $x$ to the output of the network’s penultimate layer. $y$ is the ground truth label for $x$. We want to find the partial derivative of CE loss ($L_{CE}$) to $W$.</p>
+
+\[u = W \cdot z(x; V) = (u_1 \cdots u_K) = (w_1 \cdot z(x; V) \cdots w_K \cdot z(x; V))\]
+
+\[u_k = w_k \cdot z(x; V)\]
+
+\[p_y = \sigma (u)_y = \frac{e^{u_y}}{\sum_{k\prime = 1}^{K} e^{u_{k\prime}}}\]
+
+\[L_{CE} = - \log (p_y) = - \log (\sigma(u)_y)\]
+
+<p>The partial derivative of $L_{CE}$ to $W$ is a matrix consisting of partial derivative of $L_{CE}$ to $W_k$:</p>
+
+\[\frac{\partial L_{CE}}{\partial W} = (\frac{\partial L_{CE}}{\partial w_1} \cdots \frac{\partial L_{CE}}{\partial w_K})\]
+
+<p>$\frac{\partial L_{CE}}{\partial w_k}$ is computed by combining 3 partial derivatives using chain rule. We can obtain the partial derivatives using 3 steps.</p>
+
+\[\frac{\partial L_{CE}}{\partial w_k} = \frac{\partial L_{CE}}{\partial p_y} \cdot \frac{\partial p_y}{\partial u_k} \cdot \frac{\partial u_k}{\partial w_k}\]
+
+<h1 id="step-1-fracpartial-l_cepartial-p_y">Step 1: $\frac{\partial L_{CE}}{\partial p_y}$</h1>
+
+\[\begin{align}
+\frac{\partial L_{CE}}{\partial p_y} &amp;= \frac{\partial - \log (p_y)}{\partial p_y} \\
+&amp;= - \frac{1}{p_y} 
+\end{align}\]
+
+<h1 id="step-2-fracpartial-p_ypartial-u_k">Step 2: $\frac{\partial p_y}{\partial u_k}$</h1>
+
+\[\begin{align}
+\frac{\partial p_y}{\partial u_k} &amp;= \frac{\partial \sigma(u)_y}{\partial u_k}
+\end{align}\]
+
+<p>If $k = y$:</p>
+
+\[\begin{align}
+\frac{\partial \sigma(u)_y}{\partial u_k} &amp;= \frac{e^{u_k} \sum_{k \prime=1}^K e^{u_{k\prime}} - e^{u_k} e^{u_k}}{(\sum_{k \prime=1}^K e^{u_{k\prime}})^2} \\
+&amp;= \frac{e^{u_k}}{\sum_{k\prime = 1}^{K} e^{u_{k\prime}}} \frac{\sum_{k\prime=1}^{K} e^{u_{k\prime}} - e^{u_k}}{\sum_{k\prime=1}^{K} e^{u_{k\prime}}} \\
+&amp;= \frac{e^{u_k}}{\sum_{k\prime = 1}^{K} e^{u_{k\prime}}} (\frac{\sum_{k\prime=1}^{K} e^{u_{k\prime}}}{\sum_{k\prime=1}^{K} e^{u_{k\prime}}} - \frac{e^{u_k}}{\sum_{k\prime=1}^{K} e^{u_{k\prime}}}) \\
+&amp;= p_k (1 - p_k) \\
+&amp;= p_y (1 - p_k)
+\end{align}\]
+
+<p>If $k \neq y$</p>
+
+\[\begin{align}
+\frac{\partial \sigma(u)_y}{\partial u_k} &amp;= \frac{0 \sum_{k \prime=1}^K e^{u_{k\prime}} - e^{u_k} e^{u_y}}{(\sum_{k \prime=1}^K e^{u_{k\prime}})^2} \\
+&amp;= - \frac{e^{u_k} e^{u_y}}{(\sum_{k \prime=1}^K e^{u_{k\prime}})^2} \\
+&amp;= - p_k p_y \\
+&amp;= p_y (0 - p_k)
+\end{align}\]
+
+<p>Combining the above cases, $\frac{\partial p_y}{\partial u_k} = p_y (1(k = y) - p_k)$.</p>
+
+<h1 id="step-3-fracpartial-u_kpartial-w_k">Step 3: $\frac{\partial u_k}{\partial w_k}$</h1>
+
+<p>Since $u_k = w_k \cdot z(x; V)$,</p>
+
+\[\frac{\partial u_k}{\partial w_k} = z(x; V)\]
+
+<h1 id="final-fracpartial-l_cepartial-w-and-fracpartial-l_cepartial-w_k">Final $\frac{\partial L_{CE}}{\partial W}$ and $\frac{\partial L_{CE}}{\partial w_k}$</h1>
+
+\[\begin{align}
+\frac{\partial L_{CE}}{\partial w_k} &amp;= \frac{\partial L_{CE}}{\partial p_y} \cdot \frac{\partial p_y}{\partial u_k} \cdot \frac{\partial u_k}{\partial w_k} \\
+
+&amp;= - \frac{1}{p_y} \cdot p_y (1(k=y) - p_k) \cdot z(x; V) \\
+
+&amp;= (p_k - 1(k=y)) \cdot z(x; V)
+\end{align}\]
+
+<p>$\frac{\partial L_{CE}}{\partial W}$ matrix can be formed using $\frac{\partial L_{CE}}{\partial w_k}$ vectors.</p>
+
+<p>$\frac{\partial L_{CE}}{\partial W}$ is used to update $W$ during SGD learning using $W \leftarrow W - \alpha \frac{\partial L_{CE}}{\partial W}$, where $\alpha$ is the learning rate.</p>
+</div>
+
+  <br />
+  <!-- <iframe
+    src="https://www.facebook.com/plugins/like.php?href=http://localhost:4000/jekyll/update/2023/03/15/sgd-for-softmax-layer-with-ce-loss.html&width=450&layout=standard&action=like&size=large&show_faces=true&share=true&height=80&appId=119179925551713"
+    width="450"
+    height="80"
+    style="border: none; overflow: hidden"
+    scrolling="no"
+    frameborder="0"
+    allowTransparency="true"
+  ></iframe> -->
+</article>
+
+<div class="relatedPosts">
+  <h2>Related Posts</h2>
+  
+
+  <ul>
+      
+          
+                     
+    <li>
+      <h3>
+        <a href="http://localhost:4000/jekyll/update/2023/02/21/javascript-async.html"> Asynchronous JavaScript </a>
+      </h3>
+    </li>
+              
+    <li>
+      <h3>
+        <a href="http://localhost:4000/jekyll/update/2023/01/10/rust-introduction.html"> Rust Basics </a>
+      </h3>
+    </li>
+      
+  </ul>
+</div>
+
+
+
+      <footer class="site-footer">
+  <ul class="fa-ul">
+    
+    <li>
+      <a href="https://github.com/he-yinan" target="_blank">
+        <i class="fa fa-github-square" aria-hidden="true"></i>
+      </a>
+    </li>
+     
+    <li>
+      <a
+        href="https://linkedin.com/in/yinan-he"
+        target="_blank"
+      >
+        <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+      </a>
+    </li>
+     
+  </ul>
+  <span class="site-footer-credits"
+    >Copyright © 2023 Yinan He</span
+  >
+</footer>
+
+    </section>
+  </body>
+</html>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+  }
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>

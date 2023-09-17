@@ -1,4 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-16T23:55:23+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yinan’s Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Yinan He</name></author><entry><title type="html">Asynchronous JavaScript</title><link href="http://localhost:4000/jekyll/update/2023/02/21/javascript-async.html" rel="alternate" type="text/html" title="Asynchronous JavaScript" /><published>2023-02-21T14:35:24+08:00</published><updated>2023-02-21T14:35:24+08:00</updated><id>http://localhost:4000/jekyll/update/2023/02/21/javascript-async</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/02/21/javascript-async.html">&lt;p&gt;Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-09-18T00:12:49+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Yinan’s Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Yinan He</name></author><entry><title type="html">Stochastic Gradient Descent for Softmax activation and Cross Entropy Loss</title><link href="http://localhost:4000/jekyll/update/2023/03/15/sgd-for-softmax-layer-with-ce-loss.html" rel="alternate" type="text/html" title="Stochastic Gradient Descent for Softmax activation and Cross Entropy Loss" /><published>2023-03-15T11:08:12+08:00</published><updated>2023-03-15T11:08:12+08:00</updated><id>http://localhost:4000/jekyll/update/2023/03/15/sgd-for-softmax-layer-with-ce-loss</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/03/15/sgd-for-softmax-layer-with-ce-loss.html">&lt;p&gt;Classification is used to predict discrete class labels. In deep learning, we often use the Softmax activation function in the final layer to convert logits to probabilities of the input belonging to the classes. The most common method to compute loss for classification task is Cross Entropy (CE) loss. This post explains how loss is back propagated to the &lt;strong&gt;last layer’s weight&lt;/strong&gt; using Stochastic Gradient Descent (SGD).&lt;/p&gt;
+
+&lt;p&gt;Consider neural network $f$ that has $K$ outputs and uses Softmax function $\sigma$ for the last layer activation. $f$ is parameterized by $\theta = (W, V)$, where $W$ are the weights of the last layer, and $V$ consists of weights of all previous layers. $f(x; \theta) = \sigma(W \cdot z(x;V))$, where $z$ is the nonlinear function that maps an input $x$ to the output of the network’s penultimate layer. $y$ is the ground truth label for $x$. We want to find the partial derivative of CE loss ($L_{CE}$) to $W$.&lt;/p&gt;
+
+\[u = W \cdot z(x; V) = (u_1 \cdots u_K) = (w_1 \cdot z(x; V) \cdots w_K \cdot z(x; V))\]
+
+\[u_k = w_k \cdot z(x; V)\]
+
+\[p_y = \sigma (u)_y = \frac{e^{u_y}}{\sum_{k\prime = 1}^{K} e^{u_{k\prime}}}\]
+
+\[L_{CE} = - \log (p_y) = - \log (\sigma(u)_y)\]
+
+&lt;p&gt;The partial derivative of $L_{CE}$ to $W$ is a matrix consisting of partial derivative of $L_{CE}$ to $W_k$:&lt;/p&gt;
+
+\[\frac{\partial L_{CE}}{\partial W} = (\frac{\partial L_{CE}}{\partial w_1} \cdots \frac{\partial L_{CE}}{\partial w_K})\]
+
+&lt;p&gt;$\frac{\partial L_{CE}}{\partial w_k}$ is computed by combining 3 partial derivatives using chain rule. We can obtain the partial derivatives using 3 steps.&lt;/p&gt;
+
+\[\frac{\partial L_{CE}}{\partial w_k} = \frac{\partial L_{CE}}{\partial p_y} \cdot \frac{\partial p_y}{\partial u_k} \cdot \frac{\partial u_k}{\partial w_k}\]
+
+&lt;h1 id=&quot;step-1-fracpartial-l_cepartial-p_y&quot;&gt;Step 1: $\frac{\partial L_{CE}}{\partial p_y}$&lt;/h1&gt;
+
+\[\begin{align}
+\frac{\partial L_{CE}}{\partial p_y} &amp;amp;= \frac{\partial - \log (p_y)}{\partial p_y} \\
+&amp;amp;= - \frac{1}{p_y} 
+\end{align}\]
+
+&lt;h1 id=&quot;step-2-fracpartial-p_ypartial-u_k&quot;&gt;Step 2: $\frac{\partial p_y}{\partial u_k}$&lt;/h1&gt;
+
+\[\begin{align}
+\frac{\partial p_y}{\partial u_k} &amp;amp;= \frac{\partial \sigma(u)_y}{\partial u_k}
+\end{align}\]
+
+&lt;p&gt;If $k = y$:&lt;/p&gt;
+
+\[\begin{align}
+\frac{\partial \sigma(u)_y}{\partial u_k} &amp;amp;= \frac{e^{u_k} \sum_{k \prime=1}^K e^{u_{k\prime}} - e^{u_k} e^{u_k}}{(\sum_{k \prime=1}^K e^{u_{k\prime}})^2} \\
+&amp;amp;= \frac{e^{u_k}}{\sum_{k\prime = 1}^{K} e^{u_{k\prime}}} \frac{\sum_{k\prime=1}^{K} e^{u_{k\prime}} - e^{u_k}}{\sum_{k\prime=1}^{K} e^{u_{k\prime}}} \\
+&amp;amp;= \frac{e^{u_k}}{\sum_{k\prime = 1}^{K} e^{u_{k\prime}}} (\frac{\sum_{k\prime=1}^{K} e^{u_{k\prime}}}{\sum_{k\prime=1}^{K} e^{u_{k\prime}}} - \frac{e^{u_k}}{\sum_{k\prime=1}^{K} e^{u_{k\prime}}}) \\
+&amp;amp;= p_k (1 - p_k) \\
+&amp;amp;= p_y (1 - p_k)
+\end{align}\]
+
+&lt;p&gt;If $k \neq y$&lt;/p&gt;
+
+\[\begin{align}
+\frac{\partial \sigma(u)_y}{\partial u_k} &amp;amp;= \frac{0 \sum_{k \prime=1}^K e^{u_{k\prime}} - e^{u_k} e^{u_y}}{(\sum_{k \prime=1}^K e^{u_{k\prime}})^2} \\
+&amp;amp;= - \frac{e^{u_k} e^{u_y}}{(\sum_{k \prime=1}^K e^{u_{k\prime}})^2} \\
+&amp;amp;= - p_k p_y \\
+&amp;amp;= p_y (0 - p_k)
+\end{align}\]
+
+&lt;p&gt;Combining the above cases, $\frac{\partial p_y}{\partial u_k} = p_y (1(k = y) - p_k)$.&lt;/p&gt;
+
+&lt;h1 id=&quot;step-3-fracpartial-u_kpartial-w_k&quot;&gt;Step 3: $\frac{\partial u_k}{\partial w_k}$&lt;/h1&gt;
+
+&lt;p&gt;Since $u_k = w_k \cdot z(x; V)$,&lt;/p&gt;
+
+\[\frac{\partial u_k}{\partial w_k} = z(x; V)\]
+
+&lt;h1 id=&quot;final-fracpartial-l_cepartial-w-and-fracpartial-l_cepartial-w_k&quot;&gt;Final $\frac{\partial L_{CE}}{\partial W}$ and $\frac{\partial L_{CE}}{\partial w_k}$&lt;/h1&gt;
+
+\[\begin{align}
+\frac{\partial L_{CE}}{\partial w_k} &amp;amp;= \frac{\partial L_{CE}}{\partial p_y} \cdot \frac{\partial p_y}{\partial u_k} \cdot \frac{\partial u_k}{\partial w_k} \\
+
+&amp;amp;= - \frac{1}{p_y} \cdot p_y (1(k=y) - p_k) \cdot z(x; V) \\
+
+&amp;amp;= (p_k - 1(k=y)) \cdot z(x; V)
+\end{align}\]
+
+&lt;p&gt;$\frac{\partial L_{CE}}{\partial W}$ matrix can be formed using $\frac{\partial L_{CE}}{\partial w_k}$ vectors.&lt;/p&gt;
+
+&lt;p&gt;$\frac{\partial L_{CE}}{\partial W}$ is used to update $W$ during SGD learning using $W \leftarrow W - \alpha \frac{\partial L_{CE}}{\partial W}$, where $\alpha$ is the learning rate.&lt;/p&gt;</content><author><name>Yinan He</name></author><category term="jekyll" /><category term="update" /><category term="gradient-descent" /><category term="deep-learning" /><summary type="html">Classification is used to predict discrete class labels. In deep learning, we often use the Softmax activation function in the final layer to convert logits to probabilities of the input belonging to the classes. The most common method to compute loss for classification task is Cross Entropy (CE) loss. This post explains how loss is back propagated to the last layer’s weight using Stochastic Gradient Descent (SGD).</summary></entry><entry><title type="html">Asynchronous JavaScript</title><link href="http://localhost:4000/jekyll/update/2023/02/21/javascript-async.html" rel="alternate" type="text/html" title="Asynchronous JavaScript" /><published>2023-02-21T14:35:24+08:00</published><updated>2023-02-21T14:35:24+08:00</updated><id>http://localhost:4000/jekyll/update/2023/02/21/javascript-async</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/02/21/javascript-async.html">&lt;p&gt;Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed.&lt;/p&gt;
 
 &lt;p&gt;Considering the fact that JavaScript is a single-threaded language, asynchronous programming is very useful when there exist time-consuming functions. However, asynchronous functions may be a pain in the neck in many cases. For example, the program may become unstable and error prone when asynchronous functions are not handled properly and multiple functions must execute sequentially. To manage asynchronous functions, we need to understand quite a few concepts:&lt;/p&gt;
 
@@ -134,7 +206,7 @@ Result out  &lt;span class=&quot;c&quot;&gt;# printed immediately&lt;/span&gt;
 Promise &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &amp;lt;pending&amp;gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# printed immediately&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Note that the code did not pause at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;!&lt;/code&gt; line. This cause &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;result&lt;/code&gt; to be a pending promise when &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log(result)&lt;/code&gt; is called.&lt;/p&gt;</content><author><name>Yinan He</name></author><category term="jekyll" /><category term="update" /><category term="javascript" /><category term="programming-language" /><summary type="html">Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed.</summary></entry><entry><title type="html">Rust Notes</title><link href="http://localhost:4000/jekyll/update/2023/01/10/rust-introduction.html" rel="alternate" type="text/html" title="Rust Notes" /><published>2023-01-10T23:11:21+08:00</published><updated>2023-01-10T23:11:21+08:00</updated><id>http://localhost:4000/jekyll/update/2023/01/10/rust-introduction</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/01/10/rust-introduction.html">&lt;p&gt;Rust is a System programming language like C/C++. They are used to build software and software platforms. They can be used to build operating systems, game engines, compilers…&lt;/p&gt;
+&lt;p&gt;Note that the code did not pause at &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;!&lt;/code&gt; line. This cause &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;result&lt;/code&gt; to be a pending promise when &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;console.log(result)&lt;/code&gt; is called.&lt;/p&gt;</content><author><name>Yinan He</name></author><category term="jekyll" /><category term="update" /><category term="javascript" /><category term="programming-language" /><summary type="html">Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed.</summary></entry><entry><title type="html">Rust Basics</title><link href="http://localhost:4000/jekyll/update/2023/01/10/rust-introduction.html" rel="alternate" type="text/html" title="Rust Basics" /><published>2023-01-10T23:11:21+08:00</published><updated>2023-01-10T23:11:21+08:00</updated><id>http://localhost:4000/jekyll/update/2023/01/10/rust-introduction</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2023/01/10/rust-introduction.html">&lt;p&gt;Rust is a System programming language like C/C++. They are used to build software and software platforms. They can be used to build operating systems, game engines, compilers…&lt;/p&gt;
 
 &lt;p&gt;These programming languages require a great degree of hardware interaction.&lt;/p&gt;
 

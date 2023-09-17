@@ -17,9 +17,10 @@
   </style>
   {% if page.title %}
   <h1 class="project-name">{{ page.title }}</h1>
-  {% if page.description %}
-  <h2 class="project-tagline">{{ page.description }}</h2>
-  {% endif %} {% else if %}
+  <!-- {% if page.description %} -->
+  <!-- <h2 class="project-tagline">{{ page.description }}</h2> -->
+  <!-- {% endif %}  -->
+  {% else if %}
   <h1 class="project-name">{{ site.title }}</h1>
   <h2 class="project-tagline">
     {{ site.description | default: site.github.project_tagline }}

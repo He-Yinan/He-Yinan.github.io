@@ -5,6 +5,7 @@ date:   2023-02-21 14:35:24 +0800
 categories: jekyll update
 tags: javascript programming-language
 ---
+
 Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed. 
 
 Considering the fact that JavaScript is a single-threaded language, asynchronous programming is very useful when there exist time-consuming functions. However, asynchronous functions may be a pain in the neck in many cases. For example, the program may become unstable and error prone when asynchronous functions are not handled properly and multiple functions must execute sequentially. To manage asynchronous functions, we need to understand quite a few concepts:
