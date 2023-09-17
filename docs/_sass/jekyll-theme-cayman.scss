@@ -160,11 +160,14 @@ a {
 
 .post-list li {
   padding: 10px 0;
+  margin: 10px 0;
+  padding-left: 15px;
   border-bottom: solid 2px $hr-border-color;
-  // border-top: solid 2px $hr-border-color;
-  // border-right: solid 2px $hr-border-color;
-  // border-left: solid 2px $hr-border-color;
-  // border-radius: 15px;
+  border-top: solid 2px $hr-border-color;
+  border-right: solid 2px $hr-border-color;
+  border-left: solid 2px $hr-border-color;
+  border-radius: 15px;
+  background-color: $post-list-bg-color;
 }
 
 .post-meta {
