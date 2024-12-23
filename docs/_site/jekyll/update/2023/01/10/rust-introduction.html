@@ -6,7 +6,7 @@
 
   <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Rust Basics | Yinan’s Blog</title>
-<meta name="generator" content="Jekyll v3.9.0" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="Rust Basics" />
 <meta name="author" content="Yinan He" />
 <meta property="og:locale" content="en_US" />
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Rust Basics" />
 <script type="application/ld+json">
-{"headline":"Rust Basics","dateModified":"2023-01-10T23:11:21+08:00","datePublished":"2023-01-10T23:11:21+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2023/01/10/rust-introduction.html"},"author":{"@type":"Person","name":"Yinan He"},"url":"http://localhost:4000/jekyll/update/2023/01/10/rust-introduction.html","description":"Rust is a System programming language like C/C++. They are used to build software and software platforms. They can be used to build operating systems, game engines, compilers…","@context":"https://schema.org"}</script>
+{"headline":"Rust Basics","dateModified":"2023-01-10T23:11:21+08:00","datePublished":"2023-01-10T23:11:21+08:00","author":{"@type":"Person","name":"Yinan He"},"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2023/01/10/rust-introduction.html"},"description":"Rust is a System programming language like C/C++. They are used to build software and software platforms. They can be used to build operating systems, game engines, compilers…","url":"http://localhost:4000/jekyll/update/2023/01/10/rust-introduction.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,7 +32,7 @@
   />
   <link
     rel="stylesheet"
-    href="/assets/css/style.css?v=91adec65b61c2c6ae62c1e6184fcce18dd936886"
+    href="/assets/css/style.css?v="
   />
   <link rel="shortcut icon" href="/assets/favicon.png" />
   <script src="https://use.fontawesome.com/9f9cb26d6f.js"></script>
@@ -55,7 +55,8 @@
 <section class="page-header">
   <style>
     .page-header {
-      background-image: url("https://github.com/He-Yinan/He-Yinan.github.io/blob/main/docs/image/ai_cropped_background.jpg?raw=true");
+      /* background-image: url("https://github.com/He-Yinan/He-Yinan.github.io/blob/main/docs/image/ai_cropped_background.jpg?raw=true"); */
+      background-image: url("../image/charles_river.jpg?raw=true");
       background-size: cover;
       color: rgb(246, 246, 246);
     }
@@ -141,10 +142,10 @@
 <p>Use the <code class="language-plaintext highlighter-rouge">let</code> keyword to declare a variable.</p>
 
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="k">let</span> <span class="n">company_string</span> <span class="o">=</span> <span class="s">"TutorialsPoint"</span><span class="p">;</span>  <span class="c">// string type</span>
-   <span class="k">let</span> <span class="n">rating_float</span> <span class="o">=</span> <span class="mf">4.5</span><span class="p">;</span>                 <span class="c">// float type</span>
-   <span class="k">let</span> <span class="n">is_growing_boolean</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>          <span class="c">// boolean type</span>
-   <span class="k">let</span> <span class="n">icon_char</span> <span class="o">=</span> <span class="sc">'♥'</span><span class="p">;</span>                    <span class="c">//unicode character type</span>
+   <span class="k">let</span> <span class="n">company_string</span> <span class="o">=</span> <span class="s">"TutorialsPoint"</span><span class="p">;</span>  <span class="c1">// string type</span>
+   <span class="k">let</span> <span class="n">rating_float</span> <span class="o">=</span> <span class="mf">4.5</span><span class="p">;</span>                 <span class="c1">// float type</span>
+   <span class="k">let</span> <span class="n">is_growing_boolean</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>          <span class="c1">// boolean type</span>
+   <span class="k">let</span> <span class="n">icon_char</span> <span class="o">=</span> <span class="sc">'♥'</span><span class="p">;</span>                    <span class="c1">//unicode character type</span>
 
    <span class="nd">println!</span><span class="p">(</span><span class="s">"company name is:{}"</span><span class="p">,</span><span class="n">company_string</span><span class="p">);</span>
    <span class="nd">println!</span><span class="p">(</span><span class="s">"company rating on 5 is:{}"</span><span class="p">,</span><span class="n">rating_float</span><span class="p">);</span>
@@ -175,7 +176,7 @@
 <p>Automatic Type Casting is <strong>NOT</strong> allowed in Rust. The following code will cause the compiler to throw a mismatch types error.</p>
 
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-   <span class="k">let</span> <span class="n">interest</span><span class="p">:</span><span class="nb">f32</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>   <span class="c">// integer assigned to float variable</span>
+   <span class="k">let</span> <span class="n">interest</span><span class="p">:</span><span class="nb">f32</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>   <span class="c1">// integer assigned to float variable</span>
    <span class="nd">println!</span><span class="p">(</span><span class="s">"interest is {}"</span><span class="p">,</span><span class="n">interest</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -237,7 +238,7 @@
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
    <span class="k">let</span> <span class="n">salary</span> <span class="o">=</span> <span class="mf">100.00</span><span class="p">;</span>
    <span class="k">let</span> <span class="n">salary</span> <span class="o">=</span> <span class="mf">1.50</span> <span class="p">;</span> 
-   <span class="c">// reads first salary</span>
+   <span class="c1">// reads first salary</span>
    <span class="nd">println!</span><span class="p">(</span><span class="s">"The value of salary is :{}"</span><span class="p">,</span><span class="n">salary</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -289,7 +290,7 @@
 </ul>
 
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
-   <span class="k">let</span> <span class="n">empty_string</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span> <span class="c">// empty string object created</span>
+   <span class="k">let</span> <span class="n">empty_string</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span> <span class="c1">// empty string object created</span>
    <span class="nd">println!</span><span class="p">(</span><span class="s">"length is {}"</span><span class="p">,</span><span class="n">empty_string</span><span class="nf">.len</span><span class="p">());</span>
 
    <span class="k">let</span> <span class="n">content_string</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">from</span><span class="p">(</span><span class="s">"TutorialsPoint"</span><span class="p">);</span>
@@ -335,7 +336,7 @@
    <span class="s">"KL"</span> <span class="k">=&gt;</span> <span class="s">"Kerala"</span><span class="p">,</span>
    <span class="s">"KA"</span> <span class="k">=&gt;</span> <span class="s">"Karnadaka"</span><span class="p">,</span>
    <span class="s">"GA"</span> <span class="k">=&gt;</span> <span class="s">"Goa"</span><span class="p">,</span>
-   <span class="mi">_</span> <span class="k">=&gt;</span> <span class="s">"Unknown"</span>
+   <span class="n">_</span> <span class="k">=&gt;</span> <span class="s">"Unknown"</span>
 <span class="p">};</span>
 </code></pre></div></div>
 
@@ -344,7 +345,7 @@
 </ul>
 
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
-   <span class="k">for</span> <span class="n">x</span> <span class="n">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">11</span><span class="p">{</span> <span class="c">// 11 is not inclusive</span>
+   <span class="k">for</span> <span class="n">x</span> <span class="k">in</span> <span class="mi">1</span><span class="o">..</span><span class="mi">11</span><span class="p">{</span> <span class="c1">// 11 is not inclusive</span>
       <span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mi">5</span> <span class="p">{</span>
          <span class="k">continue</span><span class="p">;</span>
       <span class="p">}</span>
@@ -376,7 +377,7 @@
 </ul>
 
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
-   <span class="c">//while true</span>
+   <span class="c1">//while true</span>
    <span class="k">let</span> <span class="k">mut</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
    <span class="k">loop</span> <span class="p">{</span>
       <span class="n">x</span><span class="o">+=</span><span class="mi">1</span><span class="p">;</span>
@@ -396,7 +397,7 @@
 <h3 id="function-definition">Function Definition</h3>
 
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">param1</span><span class="p">,</span> <span class="n">param2</span><span class="p">)</span> <span class="k">-&gt;</span> <span class="n">return_type</span> <span class="p">{</span>
-   <span class="c">//statements</span>
+   <span class="c1">//statements</span>
    <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -410,12 +411,12 @@
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">(){</span>
    <span class="k">let</span> <span class="n">no</span><span class="p">:</span><span class="nb">i32</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
    <span class="nf">mutate_no_to_zero</span><span class="p">(</span><span class="n">no</span><span class="p">);</span>
-   <span class="nd">println!</span><span class="p">(</span><span class="s">"The value of no is:{}"</span><span class="p">,</span><span class="n">no</span><span class="p">);</span> <span class="c">// 5</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"The value of no is:{}"</span><span class="p">,</span><span class="n">no</span><span class="p">);</span> <span class="c1">// 5</span>
 <span class="p">}</span>
 
 <span class="k">fn</span> <span class="nf">mutate_no_to_zero</span><span class="p">(</span><span class="k">mut</span> <span class="n">param_no</span><span class="p">:</span> <span class="nb">i32</span><span class="p">)</span> <span class="p">{</span>
    <span class="n">param_no</span> <span class="o">=</span> <span class="n">param_no</span><span class="o">*</span><span class="mi">0</span><span class="p">;</span>
-   <span class="nd">println!</span><span class="p">(</span><span class="s">"param_no value is :{}"</span><span class="p">,</span><span class="n">param_no</span><span class="p">);</span> <span class="c">// 0</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"param_no value is :{}"</span><span class="p">,</span><span class="n">param_no</span><span class="p">);</span> <span class="c1">// 0</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -430,10 +431,10 @@
 <div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
    <span class="k">let</span> <span class="k">mut</span> <span class="n">no</span><span class="p">:</span><span class="nb">i32</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
    <span class="nf">mutate_no_to_zero</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">no</span><span class="p">);</span>
-   <span class="nd">println!</span><span class="p">(</span><span class="s">"The value of no is:{}"</span><span class="p">,</span><span class="n">no</span><span class="p">);</span> <span class="c">// 0</span>
+   <span class="nd">println!</span><span class="p">(</span><span class="s">"The value of no is:{}"</span><span class="p">,</span><span class="n">no</span><span class="p">);</span> <span class="c1">// 0</span>
 <span class="p">}</span>
 <span class="k">fn</span> <span class="nf">mutate_no_to_zero</span><span class="p">(</span><span class="n">param_no</span><span class="p">:</span><span class="o">&amp;</span><span class="k">mut</span> <span class="nb">i32</span><span class="p">){</span>
-   <span class="o">*</span><span class="n">param_no</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c">//de reference</span>
+   <span class="o">*</span><span class="n">param_no</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//de reference</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -496,10 +497,10 @@
         <i class="fa fa-linkedin-square" aria-hidden="true"></i>
       </a>
     </li>
-     
+    
   </ul>
   <span class="site-footer-credits"
-    >Copyright © 2023 Yinan He</span
+    >Copyright © 2024 Yinan He</span
   >
 </footer>
 

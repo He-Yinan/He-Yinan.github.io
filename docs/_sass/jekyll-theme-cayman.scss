@@ -28,7 +28,7 @@ body {
   padding: 0;
   margin: 0;
   // font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-family: "Calibri";
+  font-family: Cambria, "Helvetica Neue", "Open Sans", Arial, sans-serif;
   font-size: 16px;
   line-height: 1.75;
   color: $body-text-color;
@@ -88,9 +88,9 @@ a {
 }
 
 .page-header {
-  color: $header-heading-color;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
   text-align: center;
-  background-color: $header-bg-color;
   height: 300px;
   //   background-image: linear-gradient(
   //     120deg,
@@ -146,6 +146,8 @@ a {
 }
 
 .navbar-nav li a {
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1px;
   padding: 0 20px;
   color: $header-heading-color;
   // font-size: 1.3rem;
@@ -323,7 +325,7 @@ ul.fa-ul li a i {
 
   code {
     padding: 2px 4px;
-    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-family: monospace, "Helvetica Neue", "Open Sans", Arial, sans-serif;
     font-size: 0.9rem;
     color: $code-text-color;
     background-color: $code-bg-color;

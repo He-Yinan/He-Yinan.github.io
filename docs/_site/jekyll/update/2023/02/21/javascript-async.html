@@ -6,7 +6,7 @@
 
   <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Asynchronous JavaScript | Yinan’s Blog</title>
-<meta name="generator" content="Jekyll v3.9.0" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="Asynchronous JavaScript" />
 <meta name="author" content="Yinan He" />
 <meta property="og:locale" content="en_US" />
@@ -20,7 +20,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Asynchronous JavaScript" />
 <script type="application/ld+json">
-{"headline":"Asynchronous JavaScript","dateModified":"2023-02-21T14:35:24+08:00","datePublished":"2023-02-21T14:35:24+08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2023/02/21/javascript-async.html"},"author":{"@type":"Person","name":"Yinan He"},"url":"http://localhost:4000/jekyll/update/2023/02/21/javascript-async.html","description":"Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed.","@context":"https://schema.org"}</script>
+{"headline":"Asynchronous JavaScript","dateModified":"2023-02-21T14:35:24+08:00","datePublished":"2023-02-21T14:35:24+08:00","author":{"@type":"Person","name":"Yinan He"},"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/jekyll/update/2023/02/21/javascript-async.html"},"description":"Asynchronous programming allow operations to be non-blocking and can be executed in a non-sequential fashion. Asynchronous programming can prevent time consuming operation to block further execution until the operation is completed.","url":"http://localhost:4000/jekyll/update/2023/02/21/javascript-async.html","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,7 +32,7 @@
   />
   <link
     rel="stylesheet"
-    href="/assets/css/style.css?v=91adec65b61c2c6ae62c1e6184fcce18dd936886"
+    href="/assets/css/style.css?v="
   />
   <link rel="shortcut icon" href="/assets/favicon.png" />
   <script src="https://use.fontawesome.com/9f9cb26d6f.js"></script>
@@ -55,7 +55,8 @@
 <section class="page-header">
   <style>
     .page-header {
-      background-image: url("https://github.com/He-Yinan/He-Yinan.github.io/blob/main/docs/image/ai_cropped_background.jpg?raw=true");
+      /* background-image: url("https://github.com/He-Yinan/He-Yinan.github.io/blob/main/docs/image/ai_cropped_background.jpg?raw=true"); */
+      background-image: url("../image/charles_river.jpg?raw=true");
       background-size: cover;
       color: rgb(246, 246, 246);
     }
@@ -108,20 +109,20 @@
 
 <p>Example:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sumLogger</span><span class="p">(</span><span class="nx">ans</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Sum: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">ans</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nf">sumLogger</span><span class="p">(</span><span class="nx">ans</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Sum: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">ans</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">adder</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nf">adder</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">num1</span> <span class="o">+</span> <span class="nx">num2</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">calculator</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">operator</span><span class="p">,</span> <span class="nx">displayer</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">ans</span> <span class="o">=</span> <span class="nx">operator</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">);</span>
-    <span class="nx">displayer</span><span class="p">(</span><span class="nx">ans</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nf">calculator</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">,</span> <span class="nx">operator</span><span class="p">,</span> <span class="nx">displayer</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">ans</span> <span class="o">=</span> <span class="nf">operator</span><span class="p">(</span><span class="nx">num1</span><span class="p">,</span> <span class="nx">num2</span><span class="p">);</span>
+    <span class="nf">displayer</span><span class="p">(</span><span class="nx">ans</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nx">calculator</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">adder</span><span class="p">,</span> <span class="nx">sumLogger</span><span class="p">);</span>
+<span class="nf">calculator</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="nx">adder</span><span class="p">,</span> <span class="nx">sumLogger</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">adder</code> is first called to compute the sum, then <code class="language-plaintext highlighter-rouge">answerLogger</code> is called to display the sum.</p>
@@ -145,24 +146,24 @@
 
 <p>Syntax to create a promise object:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="kd">let</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
         <span class="k">if</span><span class="p">(</span><span class="nx">x</span> <span class="o">===</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">Done!</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">// when successful</span>
+            <span class="nf">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">Done!</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">// when successful</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="nx">reject</span><span class="p">(</span><span class="dl">"</span><span class="s2">Failed</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">// when error occur</span>
+            <span class="nf">reject</span><span class="p">(</span><span class="dl">"</span><span class="s2">Failed</span><span class="dl">"</span><span class="p">);</span>  <span class="c1">// when error occur</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="mi">3000</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">promise</span><span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// fulfillment</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 <span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="c1">// rejection</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre></div></div>
 
@@ -174,19 +175,19 @@
 
 <p>The keyword <code class="language-plaintext highlighter-rouge">async</code> can be placed before a function like this:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="dl">"</span><span class="s2">Hello World</span><span class="dl">"</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p>Functions with <code class="language-plaintext highlighter-rouge">async</code> will always return a promise. For example, the <code class="language-plaintext highlighter-rouge">foo()</code> function is exactly the same as the function below:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">foo</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello World</span><span class="dl">"</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">foo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nf">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">Hello World</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nx">foo</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="nf">foo</span><span class="p">().</span><span class="nf">then</span><span class="p">((</span><span class="nx">message</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 <span class="p">})</span>
 </code></pre></div></div>
 
@@ -198,17 +199,17 @@
 
 <p>The keyword <code class="language-plaintext highlighter-rouge">await</code> can <strong>only be used in async functions</strong>. It forces the code to wait until the promise is in a fulfilled state. Let’s take a look at an example:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nx">timeout</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">Done!</span><span class="dl">"</span><span class="p">),</span> <span class="mi">10000</span><span class="p">)</span>  <span class="c1">// timeout for 10 seconds</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="kd">function</span> <span class="nf">timeout</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nf">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">Done!</span><span class="dl">"</span><span class="p">),</span> <span class="mi">10000</span><span class="p">)</span>  <span class="c1">// timeout for 10 seconds</span>
     <span class="p">});</span>
 
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Starting to block</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Starting to block</span><span class="dl">"</span><span class="p">);</span>
     <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">promise</span><span class="p">;</span>  <span class="c1">// !</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Result out</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Result out</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nx">timeout</span><span class="p">();</span>
+<span class="nf">timeout</span><span class="p">();</span>
 </code></pre></div></div>
 
 <p>The result printed in the console is as shown below:</p>
@@ -284,10 +285,10 @@ Promise <span class="o">{</span> &lt;pending&gt; <span class="o">}</span>  <span
         <i class="fa fa-linkedin-square" aria-hidden="true"></i>
       </a>
     </li>
-     
+    
   </ul>
   <span class="site-footer-credits"
-    >Copyright © 2023 Yinan He</span
+    >Copyright © 2024 Yinan He</span
   >
 </footer>
 
